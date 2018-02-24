@@ -20,7 +20,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText login_email, login_password;
     private TextView forgot_password, signup;
@@ -52,42 +52,9 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
 
-        login_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                attemptLogin();
-            }
-        });
-        forgot_password.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (login_email.getText().length() == 0) {
-                    Toast.makeText(LoginActivity.this, "Input an email.",
-                            Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                mAuth.sendPasswordResetEmail(login_email.getText().toString())
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(LoginActivity.this, "Email sent.",
-                                            Toast.LENGTH_SHORT).show();
-                                } else {
-//                                    need better error message
-                                    Toast.makeText(LoginActivity.this, "Failed to send. Make sure you have inputted a valid email.",
-                                            Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-            }
-        });
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                attemptSignup();
-            }
-        });
+        login_button.setOnClickListener(this);
+        forgot_password.setOnClickListener(this);
+        signup.setOnClickListener(this);
         ConstraintLayout layout=(ConstraintLayout)findViewById(R.id.background);
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -213,6 +180,40 @@ public class LoginActivity extends AppCompatActivity {
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(LoginActivity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case (R.id.login_button):
+                attemptLogin();
+                break;
+            case (R.id.forgot_password_link):
+                if (login_email.getText().length() == 0) {
+                    Toast.makeText(LoginActivity.this, "Input an email.",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                mAuth.sendPasswordResetEmail(login_email.getText().toString())
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(LoginActivity.this, "Email sent.",
+                                            Toast.LENGTH_SHORT).show();
+                                } else {
+//                                    need better error message
+                                    Toast.makeText(LoginActivity.this, "Failed to send. Make sure you have inputted a valid email.",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                break;
+            case (R.id.signup_link):
+                attemptSignup();
+                break;
+            default:
+        }
     }
 
 }

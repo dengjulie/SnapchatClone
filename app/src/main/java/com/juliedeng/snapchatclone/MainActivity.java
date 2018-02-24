@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
                 String imageURL = taskSnapshot.getDownloadUrl().toString();
 
 
-                Snap snap = new Snap(imageURL, _caption, email, key);
+                Snap snap = new Snap(imageURL, _caption, key, email);
                 ref.child("snaps").child(key).setValue(snap);
                 startActivity(new Intent(MainActivity.this, ListActivity.class));
             }

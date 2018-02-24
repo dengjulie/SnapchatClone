@@ -62,14 +62,14 @@
         android:id="@+id/list_button"
         android:layout_width="45dp"
         android:layout_height="34dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+
         android:adjustViewBounds="true"
         android:background="@null"
-
         android:scaleType="centerInside"
         app:backgroundTint="@color/lightblue"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/rightarrow" />
 

@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         ref = FirebaseDatabase.getInstance().getReference();
 
         final String key = ref.child("snaps").push().getKey();
-        storageRef = FirebaseStorage.getInstance().getReferenceFromUrl("https://snapchatclone-f21ed.firebaseio.com/");
+        storageRef = FirebaseStorage.getInstance().getReferenceFromUrl("gs://snapchatclone-f21ed.appspot.com");
         StorageReference socialsRef = storageRef.child(key + ".png");
 
         if (selectedImageUri == null) {

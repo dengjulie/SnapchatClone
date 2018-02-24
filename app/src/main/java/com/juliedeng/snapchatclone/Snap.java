@@ -2,12 +2,15 @@ package com.juliedeng.snapchatclone;
 
 import java.io.Serializable;
 
-/**
- * Created by juliedeng on 2/23/18.
- */
-
 public class Snap implements Serializable {
     String imageUrl, caption, firebaseKey, email;
+
+    public Snap() {
+        this.imageUrl = null;
+        this.caption = null;
+        this.firebaseKey = null;
+        this.email = null;
+    }
 
     public Snap(String imageUrl, String caption, String firebaseKey, String email) {
         this.imageUrl = imageUrl;

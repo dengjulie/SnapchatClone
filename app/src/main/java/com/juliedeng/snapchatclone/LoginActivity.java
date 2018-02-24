@@ -20,10 +20,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-/**
- * Created by juliedeng on 2/18/18.
- */
-
 public class LoginActivity extends AppCompatActivity {
 
     private EditText login_email, login_password;

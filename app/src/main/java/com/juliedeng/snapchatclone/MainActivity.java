@@ -85,6 +85,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         caption.setOnFocusChangeListener(keyboardHider);
+
+        caption.setVisibility(View.GONE);
+        submit_button.setVisibility(View.GONE);
     }
 
     @Override
@@ -102,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("image path", path + "");
                 image.setImageURI(selectedImageUri);
             }
+            caption.setVisibility(View.VISIBLE);
+            submit_button.setVisibility(View.VISIBLE);
         }
     }
 
@@ -114,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (selectedImageUri == null) {
             Log.d("SUBMIT", "image null");
+            return;
         }
         socialsRef.putFile(selectedImageUri).addOnFailureListener(new OnFailureListener() {
             @Override

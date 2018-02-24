@@ -71,7 +71,7 @@
         app:backgroundTint="@color/lightblue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back" />
+        app:srcCompat="@drawable/rightarrow" />
 
     <TextView
         android:id="@+id/title"

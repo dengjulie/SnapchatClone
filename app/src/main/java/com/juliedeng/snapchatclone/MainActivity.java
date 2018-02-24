@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int PICTURE_UPLOAD = 1;
     EditText caption;
-    Button submit_button;
+    Button submit_button, logout_button;
     ImageButton list_button;
     ImageView image;
 
@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         caption = findViewById(R.id.caption);
         image = findViewById(R.id.image);
         submit_button = findViewById(R.id.submit_button);
+        logout_button = findViewById(R.id.logout_button);
         list_button = findViewById(R.id.list_button);
         View.OnFocusChangeListener keyboardHider = new View.OnFocusChangeListener() {
             @Override
@@ -66,6 +67,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 submit();
+            }
+        });
+        logout_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent i = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(i);
             }
         });
 
